@@ -1,0 +1,85 @@
+1 PHP
+
+Kod PHP w odróżnieniu od JS jest wykonywany po stronie serwera.
+
+Kod PHP umieszcza się obok HTML i JS
+
+Composer- manager pakietów dla PHP, do zapisu w projekcie wymaganych bibliotek wykorzystuje pliki composer.json oraz composer.lock (analogia do pliku requirements dla pip)
+
+W projekcie istnieje katalog vendor, do którego Composer wgrywa wszystkie biblioteki, które instalujesz, a także ich zależności (biblioteki wymagane do działania instalowanych bibliotek). W przyszłości wszystkie biblioteki Composera możesz zaktualizować prostym poleceniem composer update.
+
+httpd to skrót od "HTTP Daemon". Jest to program serwera internetowego (web server), który przetwarza żądania HTTP i dostarcza strony internetowe do klientów, takich jak przeglądarki internetowe. Serwery HTTP są kluczowymi komponentami w architekturze sieci WWW, umożliwiającymi dostęp do stron internetowych przez użytkowników na całym świecie. Httpd to program, który obsługuje żądania HTTP, czyli program serwera HTTP.
+
+Dla interpretera HTML istotne są tagi otwierające <?php. Wszystko co po nich następuje jest traktowane jako kod PHP i wykonywane aż do natrafienia na domknięcie ?>
+<?php kod HTMl ?>
+
+W PHP stringi łączymy za pomocą operatora kropki.
+Koniec linijki napisanej w PHP również oznaczamy poprzez “;”
+
+Twing jest to część php-owego frameworku Symfony, która służy do eleganckiego rozdzielenia logiki aplikacji od jej prezentacji.
+
+session_start();   jest to funkcja w PHP która aktywuje obsługę sesji.
+
+W katalogu Vendor obecne są zainstalowane przez Composera biblioteki.
+
+W PHP do skryptów możemy włączać pliki za pomocą require, bądź include. Require jest bardziej restrykcyjny, niż include. Błąd wczytania pliku importowanego poprzez require spowoduje krytyczny błąd i przerwanie działania skryptu, zaś include wywoła ostrzeżenie a skrypt będzie wykonywany dalej.
+
+Singleton to taki wzorzec programowania, który definiuje, że niezależnie od tego ile obiektów danej klasy tworzę to zawsze otrzymuje taką samą instancję.
+
+Metoda GET to metoda, która służy do przesyłania danych z przeglądarki internetowej do serwera, dane są przesyłane za pomocą adresu URL
+
+POST podobnie jak metoda GET przesyła dane z przeglądarki internetowej do serwera, jednak w odróżnieniu od GET w POST dane przesyłane są jako ciało żądania HTTP i nie są widoczne w adresie url.
+
+Metoda prepare pozwala przygotować dowolne zapytanie i zwraca obiekt klasy PDOStatement
+
+W metodzie execute dane przypisujemy do zmiennych, proces ten nazywamy bindowaniem.
+
+Metoda "fetchAll", służy aby pobrać wszystkie wyniki z bazy danych na raz, w formie tablicy.
+
+Funkcja isset() sprawdza, czy dana zmienna istnieje i czy nie jest równa null.
+
+“ ”  pozwalają na interpolacje zmiennych, czyli wartości zmiennych zostają wstawione do ciągu znaków, obsługują odpowiednie znaki specjalne takie jak \n, \t
+
+‘ ’ nie pozwalają na interpolacje zmiennych czyli jeśli tekst wewnątrz nich będzie \n, \t to zostanie potraktowany dosłownie
+
+$name = $_POST['name'];: Przypisuje wartość przesłaną w polu formularza o nazwie "name" do zmiennej $name.
+
+$stmt = DB::getInstance()->prepare("INSERT INTO test ('name', 'surname') VALUES (:name, :surname)");    stworzone zostaje zapytanie SQL, które wstawia nowy rekord do tabeli test naszej bazy danych, zapytanie jest przygotowane do wykonania przy użyciu metody prepare(), które pochodzi od obiektu zwracanego przez ‘DB::getInstance()’ co jest sposobem na utworzenie połączenia z bazą danych w aplikacji napisanej przy użyciu PHP.
+
+$stmt->execute([':name' => $name, ':surname' => $surname]);  wykonanie przygotowanego wcześniej zapytania do bazy danych podstawiając zmienne do odpowiednich parametrów zapytania.
+
+print TwigHelper::getInstance()->render('guestbook.html', []);	renderowanie szablonu html za pomocą silnika szablonów Twig.
+
+$example1 = $stmt->fetchAll(POD::FETCH_ASSOC);	zapisanie wszystkich zmienny pobranych z bazy danych do zmiennej $stmt do nowej zmiennej $example1 jako tablica Asocjacyjna.
+
+Tablica asocjacyjna reprezentuje dany wiersz wynikowy, którego kluczem jest nazwa kolumny z bazy danych.
+
+{% for row in example1 %}	jest to kod Twig który jest takim łącznikiem szablonu html z PHP
+
+isset($_POST['opinion']) sprawdzenie, czy klucz opinion jest ustawiony w tablicy POST
+
+isset($_GET['delete']) sprawdza, czy klucz delete jest ustawiony w tablicy POST
+
+Ogólnie POST I GET
+GET użyjemy w sytuacji kiedy zaistnienie jakiegoś zjawiska na stronie ma spowodować jakieś działanie serwera, np możemy button-owi przyporządkować, że po naciśnięciu go serwer ma wykonać dane działanie i wtedy właśnie skorzystamy z metody GET, bo wymuszone działanie, będzie zdefiniowane w adresie url.
+POST użyjemy w sytuacji kiedy chcemy przesłać jakieś dane do serwera, tzn. W konkretne okienko na mojej stronie wpisuje ciąg znaków które to następnie poprzez formularz http są przesyłane metodą POST na serwer.
+GET- prowokuje działanie serwera poprzez url, POST wysyła dane do serwera poprzez formularz http.
+
+$_SERVER to super globalna tablica w PHP, która zawiera wszelkie informacje o serwerze i środowisku wykonawczym. Zawiera informacje takie jak nagłówki http, ścieżki skrypty i ogólnie jest studnią wiedzy informacji o serwerze, taki jak np. Adresy ip zdalnego użytkownika, czyli daje nam ona dostęp do wszystkich użytkowników, którzy w jakiś sposób korzystają, czy przyczyniają się do zasobów naszego serwera.
+
+intval() konwertuje podaną wartość na liczbę całkowitą- walidacja danych.
+
+.htaccess jest to specjalny plik, który określa sposób wykonywanych zapytań przez serwer httpd. Określa on konfiguracje serwera httpd. W tym pliku będziemy np. Określać sposób formatowania adresów strony.
+
+$_POST to superglobalna tablica w PHP, która zawiera dane przesłane metodą POST. 
+
+ $_SERVER to superglobalna tablica w PHP, która zawiera informacje o serwerze i środowisku wykonawczym. 'REMOTE_ADDR' to klucz w tej tablicy, który zawiera adres IP klienta, który wysłał żądanie.
+
+ Symbol -> w PHP jest używany do dostępu do właściwości i metod obiektu. Jest to operator dostępu do elementu obiektu, podobny do kropki (.) w językach takich jak JavaScript, Java
+
+ Aspekt, czy mail użytkownika faktycznie jest mailem sprawdzimy za pomocą wyrażenia regularnego, tzn. Funkcja preg_match() zwraca true gdy podany ciąg znaków będzie pasował do naszego wyrażenia regularnego.
+password_hash($tutaj_wstaw_haslo_uzytkownika, PASSWORD_DEFAULT)
+Jest to funkcja, której zadaniem jest zhashowanie haseł użytkowników, tak aby w  razie wycieku danych z bazy danych nie było problemu z ich ujawnieniem się.
+
+PHP posiada wbudowany mechanizm sesji.  Sesja w PHP to pojemnik przechowujący dowolne informacje o gościu (przeglądarce) odwiedzającym stronę. Możemy zapisywać w nim dane dla konkretnego gościa i mieć do nich dostęp za każdym razem kiedy odświeży on stron
+
