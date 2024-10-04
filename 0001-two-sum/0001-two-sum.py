@@ -1,11 +1,11 @@
 class Solution(object):
     def twoSum(self, nums, target):
-        for k in range(len(nums)):
+        for l in range(len(nums)):
             for j in range(len(nums)):
-                if k == j:
+                if l == j:
                     continue
-                elif nums[k] + nums[j] == target:
-                    solution = [k, j]
+                elif nums[l] + nums[j] == target:
+                    solution = [l, j]
                     return solution
                 else:
                     continue
