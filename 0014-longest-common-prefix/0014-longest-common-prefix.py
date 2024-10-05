@@ -20,7 +20,6 @@ class Solution(object):
                         removedElement = strs[0][l]
                         for i in range(len(pl) - 1, -1, -1):
                             if pl[i] == removedElement:
-                                print(pl)
                                 del pl[i]
                                 return ''.join(pl)
                         
