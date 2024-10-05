@@ -21,8 +21,7 @@ class Solution(object):
                         for i in range(len(pl) - 1, -1, -1):
                             if pl[i] == removedElement:
                                 del pl[i]
-                                return ''.join(pl)
-                        
+                                return ''.join(pl)                        
                         
         prefix = ''.join(pl)            
         return(prefix)        
