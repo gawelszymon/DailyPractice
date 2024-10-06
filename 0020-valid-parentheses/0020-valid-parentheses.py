@@ -9,7 +9,7 @@ class Solution(object):
                 if not b or (j == ")" and b[-1] != "(") or (j == "}" and b[-1] != "{") or (j == "]" and b[-1] != "["):
                     return False                 
                 b.pop()
-        if b == []:
+        if not b:
             return True
         else:
             return False
