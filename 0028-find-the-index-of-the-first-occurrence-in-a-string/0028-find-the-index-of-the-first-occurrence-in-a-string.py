@@ -1,16 +1,11 @@
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
-
-
         li = []
-        l = 0
         k = 0
         h = 0
-
         while h < len(haystack):
             if ''.join(li) == needle:
                 return k
-            
             if haystack[h] == needle[len(li)]:
                 if len(li) == 0:
                     k = h
@@ -21,8 +16,6 @@ class Solution:
                 h = k + 1
             else:
                 h += 1
-        
         if ''.join(li) == needle:
-            return k        
-                
+            return k             
         return -1
