@@ -1,9 +1,6 @@
 class Solution:
-    def plusOne(self, digits: List[int]) -> List[int]:
-        print(digits)
-        
+    def plusOne(self, digits: List[int]) -> List[int]:        
         n = len(digits) - 1
-        
         for i in reversed(digits):
             if i != 9:
                 i += 1
