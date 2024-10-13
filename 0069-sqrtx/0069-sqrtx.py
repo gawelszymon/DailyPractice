@@ -1,43 +1,22 @@
 class Solution:
     def mySqrt(self, x: int) -> int:
-        if x == 0:
-            return 0
-        
-        if x == 1:
-            return 1
+        if x == 0 or x == 1:
+            return x
         
         s = 1
         e = x
-        m = (e-s)/2 + s
-        mt = []
-        mt.append(m)
-        mtl = []
-        mtu = []
-        
-        
-        while (len(mtu) < 1 or len(mtl) < 1 or len(mt) < 50) or ((floor(mt[-1]) != floor(mt[-2]) or (mt[-1] != mtu[-1] or mt[-2] != mtl[-1])) and (floor(mt[-1]) != floor(mt[-2]) or (mt[-1] != mtl[-1] or mt[-2] != mtu[-1]))) :        
-            if mt[-1] * mt[-1] > x:
-                e = m
-                m = (e-s)/2 + s
-                mtl.append(m)
-                mt.append(m)
-            elif mt[-1] * mt[-1] < x:
-                s = m
-                m = (e-s)/2 + s
-                mtu.append(m)
-                mt.append(m)
-            elif mt[-1] * mt[-1] == x:
-                return floor(mt[-1])
+        while s <= e:
+            m = (s + e) // 2  # Integer division
             
-        print(mt[-1])
-        print(mt[-2])
-        print("mt")
-        print(mtl[-1])
-        print("mtl")
-        print(mtu[-1])
-        print("mtu")
-
+            # Check if the square of m equals x
+            if m * m == x:
+                return m
+            # If the square of m is greater than x, move the upper bound
+            elif m * m > x:
+                e = m - 1
+            # If the square of m is less than x, move the lower bound
+            else:
+                s = m + 1
         
-        return floor(mtl[-1])
-
-        
+        # Return the closest integer less than the square root
+        return e
