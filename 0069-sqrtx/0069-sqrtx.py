@@ -1,7 +1,11 @@
 class Solution:
     def mySqrt(self, x: int) -> int:
-        if x == 0 or x == 1:
-            return x
+        if x == 0:
+            return 0
+        
+        if x == 1:
+            return 1
+        
         s = 1
         e = x
         m = (e-s)/2 + s
